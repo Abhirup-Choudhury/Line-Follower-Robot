@@ -17,7 +17,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(irL, INPUT);
-  pinMode(irM, INPUT);
+  // pinMode(irM, INPUT);
   pinMode(irR, INPUT);
   pinMode(LM1, OUTPUT);
   pinMode(LM2, OUTPUT);
@@ -29,40 +29,29 @@ void setup() {
 
 void loop() {
   senseL = digitalRead(irL) ? 0 : 1;
-  senseM = digitalRead(irM) ? 0 : 1;
+  // senseM = digitalRead(irM) ? 0 : 1;
   senseR = digitalRead(irR) ? 0 : 1;
-  int detection = 100*senseL + 10*senseM + senseR;
+  int detection = 10*senseL + senseR;
   Serial.println(detection);
 
   switch(detection) {
-    case 101:
-      forward();
-      break;
-    case 110:
-      turnRight();
-      break;
     case 11:
-      turnLeft();
-      break;
-    case 100:
-      sharpRight();
-      break;
-    case 1:
-      sharpLeft();
+      forward();
       break;
     case 10:
       turnRight();
       break;
+    case 1:
+      turnLeft();
+      break;
     case 0:
-      turnRight();
-      break;
-    case 111:
-      stop();
-      break;
+      sharpRight();
+      delay(180);
     default:
       stop();
       break;
   }
+  delay(100);
 }
 
 void forward() {
