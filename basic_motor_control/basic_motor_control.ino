@@ -1,9 +1,9 @@
-#define LM1 10
-#define LM2 10
-#define RM1 10
-#define RM2 10
+#define LM1 8
+#define LM2 9
+#define RM1 6
+#define RM2 7
 
-#define enR 11
+#define enR 3
 #define enL 11
 //Adjust pin numbers
 
@@ -23,23 +23,27 @@ void setup() {
 void loop() {
   // Providing motor speeds as percentages.
   forward();
-  // delay(1000);
-  // sharpRight();
-  // delay(100);
-  // stop();
-  // delay(500);
-  // backward();
-  // delay(2000);
-  // sharpLeft();
-  // delay(100);
-  // stop();
-  // delay(500);
-  // turnRight();
-  // delay(1000);
-  // turnLeft();
-  // delay(1000);
-  // stop();
-  // delay(500);
+  delay(2000);
+  sharpRight();
+  delay(180);
+  stop();
+  delay(3000);
+  sharpLeft();
+  delay(180);
+  stop();
+  delay(3000);
+  backward();
+  delay(2000);
+  stop();
+  delay(1000);
+  turnRight();
+  delay(1000);
+  stop();
+  delay(3000);
+  turnLeft();
+  delay(1000);
+  stop();
+  delay(1000);
 }
 
 void forward() {
@@ -96,7 +100,7 @@ void turnLeft() {
   analogWrite(enL, 128);
   analogWrite(enR, 255);
 }
-void SharpRight() {
+void sharpRight() {
   digitalWrite(LM1, HIGH);
   digitalWrite(LM2, LOW);
   digitalWrite(RM1, LOW);
@@ -106,7 +110,7 @@ void SharpRight() {
   analogWrite(enL, 255);
   analogWrite(enR, 255);
 }
-void SharpLeft() {
+void sharpLeft() {
   digitalWrite(LM1, LOW);
   digitalWrite(LM2, HIGH); //LEFT MOTOR POLARITY REVERSED
   digitalWrite(RM1, HIGH);
