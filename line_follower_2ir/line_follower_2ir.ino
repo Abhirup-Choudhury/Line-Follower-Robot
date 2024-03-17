@@ -39,21 +39,19 @@ void loop() {
       forward();
       break;
     case 10:
+      stop();
       turnRight();
-      delay(20);
+      
       break;
     case 1:
+      stop();
       turnLeft();
-      delay(20);
       break;
-    // case 0:
-    //   sharpRight();
-    //   delay(180);
     default:
       forward();
       break;
   }
-  delay(20);
+  delay(100);
 }
 
 void forward() {
@@ -63,8 +61,8 @@ void forward() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 140);
-  analogWrite(enR, 140);
+  analogWrite(enL, 100);
+  analogWrite(enR, 100);
 }
 void stop() {
   digitalWrite(LM1, LOW);
@@ -75,6 +73,7 @@ void stop() {
 
   analogWrite(enL, 0);
   analogWrite(enR, 0);
+  delay(100);
 }
 void turnRight() {
   digitalWrite(LM1, HIGH);
@@ -84,7 +83,7 @@ void turnRight() {
   digitalWrite(LED_BUILTIN, LOW);
 
   analogWrite(enL, 100);
-  analogWrite(enR, 80);
+  analogWrite(enR, 50);
 }
 void turnLeft() {
   digitalWrite(LM1, HIGH);
@@ -93,7 +92,7 @@ void turnLeft() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 80);
+  analogWrite(enL, 50);
   analogWrite(enR, 100);
 }
 void sharpRight() {

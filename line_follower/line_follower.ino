@@ -12,7 +12,6 @@
 // PIN NUMBERS ARE TO BE CHANGED !!!!!!
 
 int senseL,senseM,senseR;
-int hasObstacle;
 void setup() {
   Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
@@ -39,9 +38,11 @@ void loop() {
       forward();
       break;
     case 110:
+      stop();
       turnRight();
       break;
     case 11:
+      stop();
       turnLeft();
       break;
     case 100:
@@ -51,9 +52,11 @@ void loop() {
       sharpLeft();
       break;
     case 10:
+      stop();
       turnRight();
       break;
     case 0:
+      stop();
       turnRight();
       break;
     case 111:
@@ -72,10 +75,8 @@ void forward() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  // speedL = map(speedL, 0, 100, 0, 255);
-  // speedR = map(speedR, 0, 100, 0, 255);
-  analogWrite(enL, 255);
-  analogWrite(enR, 255);
+  analogWrite(enL, 100);
+  analogWrite(enR, 100);
 }
 void stop() {
   digitalWrite(LM1, LOW);
@@ -86,6 +87,7 @@ void stop() {
 
   analogWrite(enL, 0);
   analogWrite(enR, 0);
+  delay(100);
 }
 void turnRight() {
   digitalWrite(LM1, HIGH);
@@ -94,8 +96,8 @@ void turnRight() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 255);
-  analogWrite(enR, 128);
+  analogWrite(enL, 100);
+  analogWrite(enR, 50);
 }
 void turnLeft() {
   digitalWrite(LM1, HIGH);
@@ -104,8 +106,8 @@ void turnLeft() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 128);
-  analogWrite(enR, 255);
+  analogWrite(enL, 50);
+  analogWrite(enR, 100);
 }
 void sharpRight() {
   digitalWrite(LM1, HIGH);
