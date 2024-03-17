@@ -46,10 +46,14 @@ void loop() {
       turnLeft();
       break;
     case 100:
+      forwardTurn();
+      delay(25);
       sharpRight();
       break;
     case 1:
-      forward();
+      forwardTurn();
+      delay(25);
+      sharpLeft();
       break;
     case 10:
       stop();
@@ -88,7 +92,6 @@ void stop() {
   analogWrite(enL, 0);
   analogWrite(enR, 0);
   delay(300);
-  Serial.println('B');
 }
 void turnRight() {
   digitalWrite(LM1, HIGH);
@@ -109,7 +112,16 @@ void turnLeft() {
 
   analogWrite(enL, 50);
   analogWrite(enR, 100);
-  Serial.println('A');
+}
+void forwardTurn(){
+  digitalWrite(LM1, HIGH);
+  digitalWrite(LM2, LOW);
+  digitalWrite(RM1, HIGH);
+  digitalWrite(RM2, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
+
+  analogWrite(enL, 40);
+  analogWrite(enR, 40);
 }
 void sharpRight() {
   digitalWrite(LM1, HIGH);
@@ -118,8 +130,8 @@ void sharpRight() {
   digitalWrite(RM2, HIGH); //RIGHT MOTOR POLARITY REVERSED
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 120);
-  analogWrite(enR, 120);
+  analogWrite(enL, 130);
+  analogWrite(enR, 130);
 }
 void sharpLeft() {
   digitalWrite(LM1, LOW);
@@ -128,6 +140,6 @@ void sharpLeft() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 120);
-  analogWrite(enR, 120);
+  analogWrite(enL, 130);
+  analogWrite(enR, 130);
 }
