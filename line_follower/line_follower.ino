@@ -1,6 +1,6 @@
-#define irL 2
-#define irM 12
-#define irR 5
+#define irL 12
+#define irM 5
+#define irR 2
 
 #define LM1 8
 #define LM2 9
@@ -47,16 +47,18 @@ void loop() {
       break;
     case 100:
       forwardTurn();
-      delay(25);
+      delay(50);
       sharpRight();
-      break;
+      delay(50);
+      breakr
     case 1:
       forwardTurn();
-      delay(25);
+      delay(50);
       sharpLeft();
+      delay(50);
       break;
     case 10:
-      stop();
+      // stop();
       turnRight();
       break;
     case 0:
@@ -64,6 +66,7 @@ void loop() {
       turnRight();
       break;
     case 111:
+      turnRight();
       stop();
       break;
     // default:
@@ -81,6 +84,7 @@ void forward() {
 
   analogWrite(enL, 70);
   analogWrite(enR, 70);
+  Serial.println("forward");
 }
 void stop() {
   digitalWrite(LM1, LOW);
@@ -91,6 +95,7 @@ void stop() {
 
   analogWrite(enL, 0);
   analogWrite(enR, 0);
+  Serial.println("stop");
   delay(300);
 }
 void turnRight() {
@@ -100,8 +105,9 @@ void turnRight() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 100);
-  analogWrite(enR, 50);
+  analogWrite(enL, 70);
+  analogWrite(enR, 30);
+  Serial.println("turnRight");
 }
 void turnLeft() {
   digitalWrite(LM1, HIGH);
@@ -110,8 +116,9 @@ void turnLeft() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 50);
-  analogWrite(enR, 100);
+  analogWrite(enL, 30);
+  analogWrite(enR, 70);
+  Serial.println("turnLeft");
 }
 void forwardTurn(){
   digitalWrite(LM1, HIGH);
@@ -120,8 +127,9 @@ void forwardTurn(){
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 40);
-  analogWrite(enR, 40);
+  analogWrite(enL, 70);
+  analogWrite(enR, 70);
+  Serial.println("stop");
 }
 void sharpRight() {
   digitalWrite(LM1, HIGH);
@@ -130,8 +138,9 @@ void sharpRight() {
   digitalWrite(RM2, HIGH); //RIGHT MOTOR POLARITY REVERSED
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 130);
-  analogWrite(enR, 130);
+  analogWrite(enL, 100);
+  analogWrite(enR, 100);
+  Serial.println("shapRightr");
 }
 void sharpLeft() {
   digitalWrite(LM1, LOW);
@@ -140,6 +149,7 @@ void sharpLeft() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 130);
-  analogWrite(enR, 130);
+  analogWrite(enL, 100);
+  analogWrite(enR, 100);
+  Serial.println("sharpLeft");
 }
