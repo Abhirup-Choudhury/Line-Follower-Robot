@@ -32,8 +32,14 @@ void loop() {
   senseR = digitalRead(irR) ? 0 : 1;
   int detection = 100*senseL + 10*senseM + senseR;
   Serial.println(detection);
-
-  switch(detection) {
+  decide(detection);
+  delay(100);
+  Serial.println("Inside LOOP()");
+}
+int prevReading;
+int dangerMeter;
+void decide(int sensorValue) {
+  switch(sensorValue) {
     case 101:
       forward();
       break;
@@ -50,7 +56,7 @@ void loop() {
       delay(50);
       sharpRight();
       delay(50);
-      breakr
+      break;
     case 1:
       forwardTurn();
       delay(50);
@@ -63,11 +69,26 @@ void loop() {
       break;
     case 0:
       stop();
-      turnRight();
+      delay(200);
+      sharpRight();
       break;
     case 111:
-      turnRight();
+      Serial.print("---------");
+      Serial.print(sensorValue);
+      Serial.print("---------");
+      Serial.print(prevReading);
+      Serial.println("---------");
+      dangerMeter++;
+      if (dangerMeter<10) {
+        decide(prevReading);
+        prevReading = sensorValue;
+      }
+      else {
+        dangerMeter = 0;
+      }
+      delay(100);
       stop();
+      delay(200);
       break;
     // default:
     //   stop();
