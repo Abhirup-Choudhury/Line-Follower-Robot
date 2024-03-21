@@ -34,10 +34,7 @@ void loop() {
   Serial.println(detection);
   decide(detection);
   delay(100);
-  Serial.println("Inside LOOP()");
 }
-int prevReading;
-int dangerMeter;
 void decide(int sensorValue) {
   switch(sensorValue) {
     case 101:
@@ -53,15 +50,15 @@ void decide(int sensorValue) {
       break;
     case 100:
       forwardTurn();
-      delay(50);
+      delay(200);
       sharpRight();
-      delay(50);
+      delay(500);
       break;
     case 1:
       forwardTurn();
-      delay(50);
+      delay(200);
       sharpLeft();
-      delay(50);
+      delay(500);
       break;
     case 10:
       // stop();
@@ -71,24 +68,11 @@ void decide(int sensorValue) {
       stop();
       delay(200);
       sharpRight();
+      delay(300);
       break;
     case 111:
-      Serial.print("---------");
-      Serial.print(sensorValue);
-      Serial.print("---------");
-      Serial.print(prevReading);
-      Serial.println("---------");
-      dangerMeter++;
-      if (dangerMeter<10) {
-        decide(prevReading);
-        prevReading = sensorValue;
-      }
-      else {
-        dangerMeter = 0;
-      }
-      delay(100);
+      delay(300);
       stop();
-      delay(200);
       break;
     // default:
     //   stop();
