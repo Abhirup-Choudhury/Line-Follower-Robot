@@ -87,8 +87,8 @@ void forward() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 70);
-  analogWrite(enR, 70);
+  analogWrite(enL, 140);
+  analogWrite(enR, 140);
   Serial.println("forward");
 }
 void stop() {
@@ -110,7 +110,7 @@ void turnRight() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 70);
+  analogWrite(enL, 90);
   analogWrite(enR, 30);
   Serial.println("turnRight");
 }
@@ -122,7 +122,7 @@ void turnLeft() {
   digitalWrite(LED_BUILTIN, LOW);
 
   analogWrite(enL, 30);
-  analogWrite(enR, 70);
+  analogWrite(enR, 90);
   Serial.println("turnLeft");
 }
 void forwardTurn(){
@@ -143,8 +143,8 @@ void sharpRight() {
   digitalWrite(RM2, HIGH); //RIGHT MOTOR POLARITY REVERSED
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 100);
-  analogWrite(enR, 100);
+  analogWrite(enL, 120);
+  analogWrite(enR, 120);
   Serial.println("shapRightr");
 }
 void sharpLeft() {
@@ -154,7 +154,7 @@ void sharpLeft() {
   digitalWrite(RM2, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 
-  analogWrite(enL, 100);
-  analogWrite(enR, 100);
+  analogWrite(enL, 120);
+  analogWrite(enR, 120);
   Serial.println("sharpLeft");
 }
